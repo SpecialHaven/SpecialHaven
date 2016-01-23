@@ -1,0 +1,8 @@
+<p>Comments:<p>
+<%= form_for ([@post.acting_as, @post.acting_as.comments.build]) do |f|%>
+<%= f.text_area :comment, placeholder: "Leave your comment here..."%>
+<%= f.submit "Add Comment"%>
+<% end %>
+<ul class="comments">
+<%= render @comments %>
+</ul>

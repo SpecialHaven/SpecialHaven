@@ -12,8 +12,8 @@
 <% else %>
 <% icon = "<i class='glyphicon glyphicon-heart like-button not-liked' id='heart-icon-#{link_post.acting_as.id}'></i>" %>
 <% end %>
-<%= link_to raw(icon), post_like_path(link_post.acting_as), remote: true, method: :put, class: "like-button"%>
-<small id="like-count-<%=link_post.acting_as.id%>"><%=link_post.liked_by.length%></small>
+<span><%= link_to raw(icon), post_like_path(link_post.acting_as), remote: true, method: :put, class: "like-button"%>    <%= link_to "Comment (#{link_post.comments.length})", link_post.acting_as%><span><br>
+		<small id="like-count-<%=link_post.acting_as.id%>"><%=link_post.liked_by.length%></small>
 </span>
 
 

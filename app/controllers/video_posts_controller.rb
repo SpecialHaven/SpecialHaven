@@ -5,6 +5,7 @@ class VideoPostsController < ApplicationController
 
   def show
     @post = VideoPost.find(params[:id])
+    @comments = @post.comments
   end
 
   def create

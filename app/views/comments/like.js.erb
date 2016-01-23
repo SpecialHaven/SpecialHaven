@@ -1,0 +1,9 @@
+if($("#heart-icon-<%=@comment.id%>").hasClass("liked")){
+			$("#like-count-<%=@comment.id%>").html(parseInt($("#like-count-<%=@comment.id%>").html(), 10)+1);
+		
+
+		} else if ($("#heart-icon-<%=@comment.id%>").hasClass("not-liked")){
+
+			$("#like-count-<%=@comment.id%>").html(parseInt($("#like-count-<%=@comment.id%>").html(), 10)-1);
+		}
+

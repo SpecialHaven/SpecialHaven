@@ -5,6 +5,7 @@ class TextPostsController < ApplicationController
 
 	def show
     	@post = TextPost.find(params[:id])
+    	@comments = @post.comments
   	end
 
 	def create

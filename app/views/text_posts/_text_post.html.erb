@@ -5,7 +5,7 @@
 </span>
 
 <span class="post-main">
-<span class="post-title"><a href="/text_posts/<%=text_post.id%>"><span class="post-title"><%=text_post.title%></span></a></span>
+<span class="post-title"><a href="<%=url_for(text_post.acting_as)%>"><span class="post-title"><%=text_post.title%></span></a></span>
 <span class="post-author">by <%="#{text_post.acting_as.user.first_name} #{text_post.acting_as.user.last_name}"%></span>
 <span class="post-body"><%=text_post.body%></span>
 <% if text_post.liked_by?(current_user) %>
@@ -13,8 +13,9 @@
 <% else %>
 <% icon = "<i class='glyphicon glyphicon-heart like-button not-liked' id='heart-icon-#{text_post.acting_as.id}'></i>" %>
 <% end %>
-<%= link_to raw(icon), post_like_path(text_post.acting_as), remote: true, method: :put, class: "like-button"%>
-<small id="like-count-<%=text_post.acting_as.id%>"><%=text_post.liked_by.length%></small>
+<span><%= link_to raw(icon), post_like_path(text_post.acting_as), remote: true, method: :put, class: "like-button"%>    <%= link_to "Comment (#{text_post.comments.length})", text_post.acting_as%><span><br>
+		<small id="like-count-<%=text_post.acting_as.id%>"><%=text_post.liked_by.length%></small>
 </span>
 
 </li>
+

@@ -3,15 +3,15 @@
 <%=video_post.created_at.strftime("%m/%d/%y")%><br>
 <%=video_post.created_at.strftime("%I:%M %p")%>
 </span>
-<span class="post-main"><a href="/video_posts/<%=video_post.id%>"><span class="post-title"><%=video_post.title%></span></a>
+<span class="post-main"><a href="<%=url_for(video_post.acting_as)%>"><span class="post-title"><%=video_post.title%></span></a>
 <span class="post-body"><%=video_post.body%></span>
 <% if video_post.liked_by?(current_user) %>
 <% icon = "<i class='glyphicon glyphicon-heart like-button liked' id='heart-icon-#{video_post.acting_as.id}'></i>" %>
 <% else %>
 <% icon = "<i class='glyphicon glyphicon-heart like-button not-liked' id='heart-icon-#{video_post.acting_as.id}'></i>" %>
 <% end %>
-<%= link_to raw(icon), post_like_path(video_post.acting_as), remote: true, method: :put, class: "like-button"%>
-<small id="like-count-<%=video_post.acting_as.id%>"><%=video_post.liked_by.length%></small>
+<span><%= link_to raw(icon), post_like_path(video_post.acting_as), remote: true, method: :put, class: "like-button"%>    <%= link_to "Comment (#{video_post.comments.length})", video_post.acting_as%><span><br>
+		<small id="like-count-<%=video_post.acting_as.id%>"><%=video_post.liked_by.length%></small>
 </span>
 
 </li>

@@ -1,21 +1,21 @@
 <li class="timeline-post">
-<span class="post-timestamp">
-<%=event_post.created_at.strftime("%m/%d/%y")%><br>
-<%=event_post.created_at.strftime("%I:%M %p")%>
-</span>
+	<span class="post-timestamp">
+		<%=event_post.created_at.strftime("%m/%d/%y")%><br>
+		<%=event_post.created_at.strftime("%I:%M %p")%>
+	</span>
 
-<span class="post-main">
-<a href="/event_posts/<%=event_post.id%>">
-<span class="post-title"><%=event_post.title%></span>
-</a>
-<span class="event-start-time"><b><%=event_post.event_start_time.strftime("%A, %b %e, %l:%M %p")%></b></span>
-<span class="post-body"><%=event_post.body%></span>
-<% if event_post.liked_by?(current_user) %>
-<% icon = "<i class='glyphicon glyphicon-heart like-button liked' id='heart-icon-#{event_post.acting_as.id}'></i>" %>
-<% else %>
-<% icon = "<i class='glyphicon glyphicon-heart like-button not-liked' id='heart-icon-#{event_post.acting_as.id}'></i>" %>
-<% end %>
-<%= link_to raw(icon), post_like_path(event_post.acting_as), remote: true, method: :put, class: "like-button"%>
-<small id="like-count-<%=event_post.acting_as.id%>"><%=event_post.liked_by.length%></small>
-</span>
+	<span class="post-main">
+		<a href="<%=url_for(event_post.acting_as)%>">
+			<span class="post-title"><%=event_post.title%></span>
+		</a>
+		<span class="event-start-time"><b><%=event_post.event_start_time.strftime("%A, %b %e, %l:%M %p")%></b></span>
+		<span class="post-body"><%=event_post.body%></span>
+		<% if event_post.liked_by?(current_user) %>
+		<% icon = "<i class='glyphicon glyphicon-heart like-button liked' id='heart-icon-#{event_post.acting_as.id}'></i>" %>
+		<% else %>
+		<% icon = "<i class='glyphicon glyphicon-heart like-button not-liked' id='heart-icon-#{event_post.acting_as.id}'></i>" %>
+		<% end %>
+		<span><%= link_to raw(icon), post_like_path(event_post.acting_as), remote: true, method: :put, class: "like-button"%>    <%= link_to "Comment (#{event_post.comments.length})", event_post.acting_as%><span><br>
+		<small id="like-count-<%=event_post.acting_as.id%>"><%=event_post.liked_by.length%></small>
+	</span>
 </li>

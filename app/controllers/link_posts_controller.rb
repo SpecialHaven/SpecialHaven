@@ -8,6 +8,7 @@ require 'uri'
 
   def show
     @post = LinkPost.find(params[:id])
+    @comments = @post.comments
   end
 
 

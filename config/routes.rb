@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  get 'link_posts/new'
-
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: 'registrations' }
   resources :link_posts
   resources :video_posts
   resources :event_posts
   resources :image_posts
   resources :text_posts
+
   resources :posts do
     put 'like'
+    resources :comments, :only => [:create, :destroy] do
+      put 'like'
+    end
   end
   resources :users
 

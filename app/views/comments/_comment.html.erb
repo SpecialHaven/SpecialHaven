@@ -1,0 +1,21 @@
+<li class="comment">
+
+	<span class="comment-timestamp">
+		<%=comment.created_at.strftime("%m/%d/%y")%><br>
+		<%=comment.created_at.strftime("%I:%M %p")%>
+	</span>
+	<span class="comment-main">
+		<% if comment.liked_by?(current_user) %>
+		<% icon = "<i class='glyphicon glyphicon-heart like-button liked' id='heart-icon-#{comment.id}'></i>" %>
+		<% else %>
+		<% icon = "<i class='glyphicon glyphicon-heart like-button not-liked' id='heart-icon-#{comment.id}'></i>" %>
+		<% end %>
+		<span class="comment-likes">
+		<%= link_to raw(icon), post_comment_like_path(@post, comment), remote: true, method: :put, class: "like-button"%>
+		<small id="like-count-<%=comment.id%>" class="num-likes"><%=comment.liked_by.length%></small>
+		</span>
+		<span class="username"><b><%=link_to "#{comment.user.first_name} #{comment.user.last_name}", url_for(comment.user)%></b></span>&nbsp;<span class="comment-body"><%=comment.comment%></span>
+
+		</span>
+
+</li>

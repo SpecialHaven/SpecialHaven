@@ -6,6 +6,7 @@ class EventPostsController < ApplicationController
 
   def show
     @post = EventPost.find(params[:id])
+    @comments = @post.comments
   end
 
   def create

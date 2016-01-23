@@ -12,5 +12,12 @@ class PostsController < ApplicationController
   		end
 	end
 
+	def show
+		post = Post.find(params[:id])
+		@comments = post.comments
+		@post = post.specific
+		render "#{polymorphic_url(@post.class, only_path: true)}/show"
+	end
+
 
 end

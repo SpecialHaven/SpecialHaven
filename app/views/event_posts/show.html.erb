@@ -1,6 +1,10 @@
+
 <h2><%= @post.title %></h2><br><hr>
 <p>Event start time: <%=@post.event_start_time.strftime("%A, %B %e, %Y at %l:%M %p")%></p>
 <p>Event end time: <%=@post.event_end_time.strftime("%A, %B %e, %Y at %l:%M %p")%></p>
 <p>Event zip code: <%=@post.location%></p>
 <hr>
 <p><%= @post.body %></p>
+
+
+<%= render partial: "comment_section"%>

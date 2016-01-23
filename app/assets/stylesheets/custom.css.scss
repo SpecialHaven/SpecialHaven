@@ -215,9 +215,69 @@ input {
   }
 
   .post-body {
+
     -webkit-flex: 1;
             flex: 1;
   }
+}
+
+/* comments */
+
+.comments {
+  list-style: none;
+  padding: 0;
+
+  .comment {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    padding: 10px;
+    border-bottom: 1px solid #D0D0D0;
+  }
+    .comment-timestamp {
+
+    flex: 1;
+    max-width: 70px;
+        text-align: right;
+    }
+
+  .comment-main {
+  flex: 4;
+      display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+
+  }
+    .comment-body {
+    flex: 4;
+  }
+
+  .comment-likes {
+    flex: 1;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    max-width: 30px;
+  }
+
+    .num-likes {
+    flex: 1;
+    text-align: center;
+  }
+
+
+  .like-button {
+  margin: auto;
+    flex: 1;
+    max-width: 20px;
+    text-align: center;
+    }
+
+
+
 }
 
 /* like button */
